@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        body{
+            margin: 0;padding: 0;
+        }
+        .container{
+            width: 1226px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .main{
+            position: relative;
+        }
+        .box{
+            margin: 50px auto;
+            width: 400px;
+            height: 500px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            
+        }
+        .box input{
+            outline: none;
+            border: none;
+        }
+        .box input:nth-child(2){
+            width: 350px;
+            height: 50px;
+            margin:20px 0 0 20px;
+            border: solid 1px #4a4a4a;
+            
+        }
+        .box input:nth-child(3){
+            width: 350px;
+            height: 50px;
+            margin:20px 0 0 20px;
+            border: solid 1px #4a4a4a;
+        }
+        .box input:nth-child(4){
+            width: 350px;
+            height: 50px;
+            margin:30px 0 0 20px;
+            background-color: #ff6700;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            
+        }
+        a{
+            text-decoration: none;
+        }
+        .header-right{
+            float: left;padding-top: 22px;
+        }
+        .header-content{
+            float: left;padding-left: 20px;width: 750px;
+        }
+        .header-content p{
+            font-size: 30px;
+        }
+        .p_1{
+            font-size: 14px;color: #999;text-align: center;
+        }
+        .p_1 a{
+            color: #999;
+        }
+        .p_1 a:hover{
+            color: #ff6700;
+        }
+        .footer{
+            height: 100px;padding-top: 100px;
+            text-align: center;font-size: 14px;
+        }
+        .footer ul{
+            list-style: none;margin: 0 auto;
+            padding-left: 185px;display: block;width: 500px;height: 50px;
+        }
+        .footer ul li{
+            float: left;
+        }
+        .footer ul li a{
+            color: #757575;
+        }
+        .footer ul li a:hover{
+            color: #000;
+        }
+        .footer span{
+            margin: 0 10px;
+        }
+        .footer_1 p{
+            margin: 10px 0;display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-right">
+                <a href="../infot/infot.html"><img src="../image/xm_02.jpg" alt=""></a>
+            </div>
+            <div class="header-content">
+               <p>小米商城</p>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <a href=""><img src="../image/xm_27.jpg" alt="" style="width: 100%;height: 500px;"></a>
+        <div class="box">
+            <h3 style="text-align: center;">账号登录</h3>
+            <input type="text" value="邮箱/手机号/小米ID" name="username" id="txt">
+            <input type="text" value="密码" name="password" id="pass">
+            <input type="button" value="登录" id="but">
+            <p style="text-align: center;"><a href="../infot/zhuce.html" style="color: #ff6700;font-size: 12px;">手机验证码登录/注册</a></p>
+            <p class="p_1"><a href="../infot/zhuce.html">立即注册</a>|<a href="#">忘记密码</a></p>
+        </div>
+    </div>
+    <div class="footer">
+         <div class="container">
+            <ul>
+                <li>
+                   <a href="">简体</a><span>|</span>
+                </li>
+                <li>
+                   <a href="">繁体</a><span>|</span>
+                </li>
+                <li>
+                   <a href="">English</a><span>|</span>
+                </li>
+                <li>
+                   <a href="">常见问题</a><span>|</span>
+                </li>
+                <li>
+                   <a href="">隐私政策</a><span>|</span>
+                </li>
+            </ul>
+            <div class="footer-1" >
+                <p>小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+            </div>
+         </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        var txt=document.getElementById('txt');
+        var pass=document.getElementById('pass');
+        var but=document.getElementById('but');
+
+        but.onclick=function(){
+            var user=txt.value;
+            var upass=pass.value;
+            $.ajax({
+                url:'../php/denglu.php',
+               data:{
+                username:user,
+                password:upass,
+               },
+               success:function(row){
+                   if(row==1){
+                       location.href="infot.html"
+                   }else{
+                    txt.innerHTML='账号或密码错误'
+                    pass.innerHTML='账号或密码错误'
+                    alert('账号或密码错误')
+                   }
+               }
+            })
+        }
+    </script>
+</body>
+</html>

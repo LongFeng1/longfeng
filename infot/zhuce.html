@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <style>
+         *{
+            margin: 0;padding: 0;
+
+        }
+        body{
+            font-size: 14px;color: #666;
+            background-color: #f9f9f9;
+        }
+        .container{
+            width: 1226px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .box{
+            margin: 20px auto;
+            width: 800px;
+            height: 600px;
+            background-color: #fff;
+            font-size: 12px;
+        }
+        .box img{
+            margin: 0 0 50px 350px;
+        }
+        .box form{
+            width: 400px;
+            height: 300px;
+            margin: 50px 0 0 250px;
+        }
+        input{
+            outline: none;
+            border: none;
+            
+        }
+        .box h2{
+            text-align: center;color: #000;font-size: 30px;font-weight: normal;
+        }
+        .box p{
+            font-size: 16px;color: #000;
+        }
+        .box select{
+            width: 300px;height: 50px;
+        }
+        #txt{
+            width: 300px;height: 40px;
+            border: solid 1px #e8e8e8;
+        }
+        #sut{
+            width: 300px;height: 50px;
+            text-align: center;line-height: 50px;
+            margin-top: 30px;background-color: #ff6700;
+            border: none;
+        }
+        #pass{
+            width: 300px;height: 40px;
+            border: solid 1px #e8e8e8;
+        }
+        .footer{
+            height: 100px;padding-top: 100px;
+            text-align: center;font-size: 14px;
+        }
+        .footer ul{
+            list-style: none;margin: 0 auto;
+            padding-left: 185px;display: block;width: 500px;height: 50px;
+        }
+        .footer ul li{
+            float: left;
+        }
+        .footer ul li a{
+            color: #757575;
+        }
+        .footer ul li a:hover{
+            color: #000;
+        }
+        .footer span{
+            margin: 0 10px;
+        }
+        .footer_1 p{
+            margin: 10px 0;display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../image/xm_02.jpg" alt="">
+        <h2>注册小米账号</h2>
+           <form action="">
+            <p>国家/地区</p>
+            <select name="" id="">
+                <option value="">中国</option>
+                <option value="">美国</option>
+                <option value="">英国</option>
+                <option value="">哈国</option>
+            </select>
+            <p>手机号码</p>
+            <input type="text" id="txt" value="请输入手机号码" name="username" >
+            <p>密码</p>
+            <input type="text" id="pass"  value="" name="password">
+            <input type="submit" id="sut" value="立即注册">
+           </form>
+    </div>
+    <div class="footer">
+        <div class="container">
+           <ul>
+               <li>
+                  <a href="">简体</a><span>|</span>
+               </li>
+               <li>
+                  <a href="">繁体</a><span>|</span>
+               </li>
+               <li>
+                  <a href="">English</a><span>|</span>
+               </li>
+               <li>
+                  <a href="">常见问题</a><span>|</span>
+               </li>
+               <li>
+                  <a href="">隐私政策</a><span>|</span>
+               </li>
+           </ul>
+           <div class="footer-1" >
+               <p>小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+           </div>
+        </div>
+   </div>
+<script>
+    var txt=document.getElementById('txt');
+    var pass=document.getElementById('pass');
+    var sut=document.getElementById('sut');
+    sut.onclick=function(){
+        var user=txt.value;
+        var upass=pass.value;
+        $.ajax({
+            url:'../php/requist.php',
+            data:{
+                username:user,
+                password:upass,
+            },
+            // dataType:"",
+            success:function(res){
+                if(res==1){
+                    location.href="denglu.html"
+                }else{
+                    txt.innerHTML='账号或密码错误'
+                    pass.innerHTML='账号或密码错误'
+                    alert('账号或密码错误')
+                }
+            }
+        })
+    }
+</script>  
+<script src="../js/jquery.min.js"></script>  
+</body>
+</html>
